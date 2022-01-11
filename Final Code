@@ -1,0 +1,26 @@
+<table cellspacing="0" cellpadding="10" border="1"
+style=" width: auto;">
+    #set($item = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    #set($ColumnCount = 0)
+    #set($RowCount = 0)
+    #foreach($list in $item)##
+        #set($ColumnCount = $ColumnCount+1)
+        #if( $ColumnCount == 1)
+            <tr>
+        #end
+            <td>##$list##</td>
+        #if( $ColumnCount == 4 )
+            </tr>
+            #set($ColumnCount = 0)
+        #end
+        #set($RowCount = $RowCount+1)
+        #if($item.size() == $RowCount)
+            #if($ColumnCount != 0 AND $ColumnCount != 4)
+                #foreach($i in [$ColumnCount..3])
+                    <td></td>
+                #end
+                </tr>
+            #end
+        #end
+    #end##
+</table>
